@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominion Clash: Tactician Protocol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="end-overlay" class="overlay">
+            <div id="end-title" class="overlay-title">Vitória</div>
+            <p id="end-desc" style="text-align: center; padding: 0 20px; color: #b3a0c2;"></p>
+            <button class="restart-btn" onclick="resetGame()">Jogar Novamente</button>
+        </div>
+
+        <div class="opponent-area">
+            <div class="opponent-name">Parceiro (Submissivo/a)</div>
+            <div style="font-size: 0.75rem; color: #b3a0c2; margin-top: 3px;">Resistência Mental: <span id="opp-resistance">100</span>%</div>
+        </div>
+
+        <div class="battlefield">
+            <div class="gauge-container">
+                <div class="gauge-label">NÍVEL DE CONTROLE / ÊXTASE</div>
+                <div class="bar-bg">
+                    <div id="control-bar" class="bar-fill"></div>
+                </div>
+            </div>
+            <div id="action-log">O jogo começou. Acumule Foco para ditar o ritmo da sessão.</div>
+        </div>
+
+        <div>
+            <div class="resource-area">
+                <div class="resource-bar">
+                    <div id="focus-bar" class="resource-fill"></div>
+                </div>
+                <div id="focus-text" class="resource-text">0 / 10 FOCO</div>
+            </div>
+
+            <div class="hand" id="player-hand">
+                </div>
+        </div>
+
+        <button class="safeword-btn" onclick="triggerSafeWord()">🔴 RED (Safe Word)</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

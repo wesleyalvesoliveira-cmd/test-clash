@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: #0d0614;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 450px;
+    height: 95vh;
+    background: linear-gradient(180deg, #180b24 0%, #0a0410 100%);
+    border: 3px solid #ff0055;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+}
+
+.opponent-area {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-bottom: 2px solid #a300cc;
+}
+
+.opponent-name {
+    font-size: 1.2rem;
+    color: #a300cc;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.battlefield {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.gauge-container {
+    width: 100%;
+    text-align: center;
+}
+
+.gauge-label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #ff0055;
+    font-weight: bold;
+}
+
+.bar-bg {
+    width: 100%;
+    height: 24px;
+    background-color: #221133;
+    border-radius: 12px;
+    border: 1px solid #ff0055;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.bar-fill {
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #ff0055, #a300cc);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px #ff0055;
+}
+
+#action-log {
+    font-size: 0.85rem;
+    color: #b3a0c2;
+    height: 60px;
+    text-align: center;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.resource-area {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.resource-bar {
+    height: 12px;
+    background-color: #1a0033;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #00ffff;
+}
+
+.resource-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00cccc, #00ffff);
+    box-shadow: 0 0 8px #00ffff;
+    transition: width 0.1s linear;
+}
+
+.resource-text {
+    font-size: 0.8rem;
+    color: #00ffff;
+    text-align: right;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+.hand {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+.card {
+    background: #25123e;
+    border: 2px solid #a300cc;
+    border-radius: 10px;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card.disabled {
+    opacity: 0.5;
+    border-color: #442266;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.card-cost {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: #00ffff;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px #00ffff;
+}
+
+.card-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8px;
+    color: #fff;
+}
+
+.card-type {
+    font-size: 0.6rem;
+    color: #ff0055;
+    text-transform: uppercase;
+}
+
+.safeword-btn {
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255,0,0,0.5);
+    transition: background 0.2s;
+}
+
+.safeword-btn:hover {
+    background: #cc0000;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(13, 6, 20, 0.95);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+    display: none;
+}
+
+.overlay-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff0055;
+    text-align: center;
+}
+
+.restart-btn {
+    background: #a300cc;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
